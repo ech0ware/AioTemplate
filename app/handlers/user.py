@@ -34,3 +34,7 @@ async def profile(message: Message):
                         f'Язык: {user.language_code}'
                         f'Телеграм премиум: {user.is_premium}\n'
                         f'')
+
+@user_router.callback_query(lambda cb: cb.data == 'close')
+async def clear_broadcast(callback: CallbackQuery):
+    await callback.message.delete()
