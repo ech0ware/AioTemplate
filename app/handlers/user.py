@@ -10,6 +10,8 @@ user_states = {}
 
 @user_router.message(CommandStart())
 async def cmd_start(message: Message):
+    user_id = message.from_user.id
+    add_user_to_db(user_id)
     await message.reply('Добро пожаловать в бота\n'
                         'Описание', parse_mode='HTML', reply_markup=ikb.inlinekb)
 
